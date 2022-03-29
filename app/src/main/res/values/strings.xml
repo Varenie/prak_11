@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">prak_11</string>
+    <string name="name">Product name</string>
+    <string name="price">845,5</string>
+    <string name="rub">руб.</string>
+    <string name="count">55</string>
+    <string name="bonus">Бонусов</string>
+    <string name="bonus_count">567</string>
+    <string name="pay">оплатить</string>
+    <string name="total">ИТОГО</string>
+    <string name="bank">Оплатить через мобильный банк</string>
+    <string name="card">Оплатить картой</string>
+    <string name="cash">Оплатить наличными курьеру</string>
+</resources>
