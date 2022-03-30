@@ -32,7 +32,7 @@ class CatalogAdapter(private val productList: List<Product>): RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogVH {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.catalog_recycler_item, null)
+        val view = inflater.inflate(R.layout.catalog_recycler_item, parent, false)
 
         return CatalogVH(view)
     }

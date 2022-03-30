@@ -1,5 +1,6 @@
 package com.varenie.prak_11
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,8 @@ class MyAdapter(private val productBasket: ArrayList<Product>): RecyclerView.Ada
             price.text = product.price.toString()
 
             var count = 1
+            countTxt.text = count.toString()
+
             plus.setOnClickListener {
                 count++
                 countTxt.text = count.toString()
@@ -32,7 +35,7 @@ class MyAdapter(private val productBasket: ArrayList<Product>): RecyclerView.Ada
                 count--
                 if (count == 0) {
                     Singleton.totalPrice.value = Singleton.totalPrice.value?.minus(product.price)
-                    Singleton.productBasket.value?.drop(position)
+                    Singleton.productBasket.value?.remove(product)
                     Singleton.productBasket.apply {
                         postValue(value)
                     }
@@ -44,7 +47,7 @@ class MyAdapter(private val productBasket: ArrayList<Product>): RecyclerView.Ada
 
             delete.setOnClickListener {
                 Singleton.totalPrice.value = Singleton.totalPrice.value?.minus(product.price * count)
-                Singleton.productBasket.value?.drop(position)
+                Singleton.productBasket.value?.remove(product)
                 Singleton.productBasket.apply {
                     postValue(value)
                 }
@@ -56,7 +59,7 @@ class MyAdapter(private val productBasket: ArrayList<Product>): RecyclerView.Ada
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.recycler_item, null)
+        val view = inflater.inflate(R.layout.recycler_item, parent, false)
 
         return MyHolder(view)
     }
